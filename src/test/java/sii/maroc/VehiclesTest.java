@@ -14,28 +14,28 @@ import org.junit.Test;
 *************/
 public class VehiclesTest {
 
-    private Vehicles vehicles;
+    private Vehicle vehicle;
 
     @Before
     public void initVehicles() {
-        vehicles = new Vehicles("Diesel:5%,Fuel:6%,Hybrid:3%");
+        vehicle = new Vehicle("Diesel:5%,Fuel:6%,Hybrid:3%");
     }
 
     @Test
     public void testCar() {
-        String report = vehicles.move("CAR", "Diesel", "1 2 3 4", "200 KM");
+        String report = vehicle.move("CAR", "Diesel", "1 2 3 4", "200 KM");
         Assert.assertEquals("DOORS OK, MOVING. The CAR will consume 10.00 L", report);
     }
 
     @Test
     public void testTruck() {
-        String report = vehicles.move("TRUCK", "Diesel", "1 2", "1000 KM");
+        String report = vehicle.move("TRUCK", "Diesel", "1 2", "1000 KM");
         Assert.assertEquals("DOORS OK, MOVING. The TRUCK will consume 50.00 L", report);
     }
 
     @Test
     public void testMotorCycle() {
-        String report = vehicles.move("MOTORCYCLE", "Fuel", "", "50 KM");
+        String report = vehicle.move("MOTORCYCLE", "Fuel", "", "50 KM");
         Assert.assertEquals("DOORS OK, MOVING. The MOTORCYCLE will consume 3.00 L", report);
     }
 
@@ -47,7 +47,7 @@ public class VehiclesTest {
           |_|
           
          ************/
-        String report = vehicles.move("CAR", "Fuel", "1 3 4", "200 KM");
+        String report = vehicle.move("CAR", "Fuel", "1 3 4", "200 KM");
         Assert.assertEquals("DOORS KO, BLOCKED \n"+
                             "  _\n"+
                             " | \\\n"+
@@ -62,7 +62,7 @@ public class VehiclesTest {
           /_|
           
         ************/
-        String report = vehicles.move("CAR", "Hybrid", "1 2 4", "200 KM");
+        String report = vehicle.move("CAR", "Hybrid", "1 2 4", "200 KM");
         Assert.assertEquals("DOORS KO, BLOCKED \n"+
                             "  _\n"+
                             " | |\n"+
